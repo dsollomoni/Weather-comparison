@@ -2,11 +2,9 @@ import os
 import requests
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
 load_dotenv()
 
 def get_weather_data(city):
-    """Fetches weather data from the API for a given city."""
     API_KEY = os.getenv("WEATHER_API_KEY")
     if not API_KEY:
         print("Error: API key is missing. Set it in the .env file.")
@@ -23,7 +21,6 @@ def get_weather_data(city):
         return None
 
 def compare_temperatures(city1, city2):
-    """Fetches weather data for two cities and compares temperatures."""
     data1 = get_weather_data(city1)
     data2 = get_weather_data(city2)
 
@@ -42,7 +39,6 @@ def compare_temperatures(city1, city2):
     return "Could not retrieve data for both cities."
 
 def compare_rain_chance(city1, city2):
-    """Compares the chance of rain between two cities."""
     data1 = get_weather_data(city1)
     data2 = get_weather_data(city2)
 
@@ -63,11 +59,9 @@ def compare_rain_chance(city1, city2):
     
     return "Could not retrieve weather data for both cities."
 
-# Ask the user for input
 city1 = input("Enter the first city: ")
 city2 = input("Enter the second city: ")
 
-# Compare weather conditions
 print("\nTemperature Comparison:")
 print(compare_temperatures(city1, city2))
 
